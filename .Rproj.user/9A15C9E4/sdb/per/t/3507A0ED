@@ -1,0 +1,16 @@
+{
+    "contents" : "#Load devtools\nlibrary(devtools)\n#Installpackage\ninstall_github(\"sjkiss/tm.newsstand\")\n#Attach libraries\nlibrary(tm.newsstand)\nlibrary(tm)\n#Set your working directory\nsetwd('~/Your/directory')\n#setwd('/Users/Simon/Downloads')\n#Readin Globe articles\nglobe<-NewsSource('globe.txt')\n#Make Globe corpus\nglobe.corp<-Corpus(globe)\n#Read in Whig-Standard\nwhig<-NewsSource('kingston_whig_standard.txt')\n#Make Whig Corpus\nwhig.corp<-Corpus(whig)\n#Read in Caglary articles\ncalgary<-NewsSource('calgary_herald.txt')\n#Make Calgary Corpus\ncalgary<-Corpus(calgary)\n#Read in Victoria articles\nvictoria<-NewsSource('victoria_times_colonist.txt')\n#Make Victoria corpus\nvictoria.corp<-Corpus(victoria)\n#read in Winnipeg articles\nwinnipeg<-NewsSource('winnipeg_free_press.txt')\n#Make Winnipeg Corpus\nwinnipeg.corp<-Corpus(winnipeg)\n#read in Ottawa articles\nottawa<-NewsSource('ottawa_citizen.txt')\n#Make ottawa corpus\nottawa.corp<-Corpus(ottawa)\n#read in cbc articles\ncbc<-NewsSource('cbc_the_national.txt')\n#Make CBC Corpus\ncbc.corp<-Corpus(cbc)\n#Check meta data\nlapply(cbc.corp, meta)\n#Read in articles from multiple newspapers articles\nmulti<-NewsSource('multiple_papers.txt')\n#Make multi-corpus\nmulti.corp<-Corpus(multi)\n#Get meta data\nmeta.multi<-lapply(multi.corp,meta)\nmeta.multi\n#Get Sections\nsections<-unlist( #unlist what follows\n    lapply(meta.multi, function(x) x$Section #on each element, get the section\n           )#close lapply loop\n         )#close unlist loop\n#Check Sections\nsections\n#get dates\nstory.dates <-lapply(meta.multi, function(x) as.Date(x$datetimestamp))\n#Unlist() kills the date format so use do.call() instead. Frustrating.\nstory.dates<-do.call('c', story.dates)\n#Cut \nbarplot(#begin barplot\n  table(#begin table\n    cut(story.dates, 'years')#break the story.dates vector into years\n    )#Close table\n  )#close barplot\n\n#check length of sections, dates and multi.corp for validation purposes\nlength(sections)\nlength(multi.corp)\nlength(story.dates)\n\n",
+    "created" : 1447361679709.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "160432502",
+    "id" : "3507A0ED",
+    "lastKnownWriteTime" : 1447359640,
+    "path" : "~/tm.newsstand/R/read_data.R",
+    "project_path" : "R/read_data.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

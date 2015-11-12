@@ -17,7 +17,7 @@ readNews<-tm::FunctionGenerator(
     origin<-gsub('Publication title:', '', grep('^Publication title:', elem$content, value=TRUE))
     id<-as.numeric(gsub('ProQuest document ID: ', '', grep('^^ProQuest document ID:', elem$content, value=TRUE)))
     ####Note: Just because ProQuest decides to be a little tricky with their encoding of "Full Text", you have to account for both capital T and small t. Thanks ProQuest! 
-    content<- elem$content[grep('^Full [Tt]ext:', elem$content):grep('^Title', elem$content)-1]
+    content<- elem$content[grep('^Full [Tt]ext:', elem$content):grep('^Title:', elem$content)-1]
     doc <- PlainTextDocument(x = gsub('Full Text: |Full text: ', '', content),
                              author = author,                            
                              heading = title,

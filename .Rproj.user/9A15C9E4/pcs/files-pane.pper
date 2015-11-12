@@ -1,0 +1,9 @@
+{
+    "path" : "~/tm.newsstand/R",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

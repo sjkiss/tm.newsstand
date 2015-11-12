@@ -1,0 +1,10 @@
+Package: tm.newsstand
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2015-11-12
+Author: Who wrote it
+Imports: tm
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description:This package is a plugin to the tm package designed to read in text files from the Canadian NewsStand database.
+License: GPL-2

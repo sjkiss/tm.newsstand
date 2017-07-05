@@ -11,6 +11,7 @@ NewsSource<-function(x, encoding = "UTF-8") {
   content<-content[grep('^People:', content, invert=TRUE)]
   content<-content[grep('^Company/Organization:', content, invert=TRUE)]
     content<-content[grep('^Illustration ', content, invert=TRUE)]
+    content<-content[grep('^Links: ', content, invert=TRUE)]
       content<-content[grep('^Identifier / keyword', content, invert=TRUE)]
   #content<-content[-grep('Caption:?', content)]
   # content<-content[-grep('________', content)]

@@ -15,7 +15,7 @@ Please note: in its current form it \emph{requires} the output from Canadian New
 \itemize{
 \item It appears that Canadian Newsstand has moderately different fields and field orders for different newspapers, article types and media types.  The function NewsSource() is currently built with an eye to extracting the most metadata possible out of newspapers (as opposed to TV transcripts or other media).  It has been tested on a number of regional and national publications and it seems to be working well, but the package author cannot guarantee that it might not falter on a particular newspaper. 
 \item Articles must be exported from Canadian Newsstand as .txt files 
-\ite When exporting, users are advised to select the ``Full text(citation, abstract, full text)'' option
+\item When exporting, users are advised to select the ``Full text(citation, abstract, full text)'' option
 \item Users \emph{must not} include a Table of Contents, bibliographic elements or a cover page. Otherwise NewsSource() will choke
 \item Users should also include Document Numbering, although I don't believe this is strictly necessary. 
 }
@@ -31,5 +31,5 @@ Feinerer, I. “Introduction to the Tm Package Text Mining in R,” July 10, 201
 
 \keyword{ package }
 \examples{
-~~ simple examples of the most important functions ~~
+
 }

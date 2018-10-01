@@ -3,6 +3,7 @@ NewsSource<-function(x, encoding = "UTF-8") {
   # into a character vector called 'content' with one item
   # per document
   content<-readLines(x, warn=FALSE)
+  #There are six lines of superfluous content at the end of each document downloaded from the ProQuest data base. 
   content<-content[1:(length(content)-6)]
   ###The following are lines of usually superfluous information that are placed between the full text and Title:.  They are annoying because they are not always attached to every article, making them useless as markers to end the full text section via grep in readNews. If we did not delete them, they would end up in the full-text section of every corpus element.  They have to be deleted with the invert argument because grepping those lines that do not match ^Subject: via the -grep argument fails when there are none of these lines in a document. This has happened.
   # content<-   content[grep('^Credit:', content, invert=TRUE)]
@@ -14,9 +15,12 @@ NewsSource<-function(x, encoding = "UTF-8") {
   #   content<-content[grep('^Links: ', content, invert=TRUE)]
   #   content<-content[grep('^Abstract: ', content, invert=TRUE)]
   #     content<-content[grep('^Identifier / keyword', content, invert=TRUE)]
-  #content<-content[-grep('Caption:?', content)]
+  # content<-content[-grep('Caption:?', content)]
   # content<-content[-grep('________', content)]
+  #Delete empty lines
   content<-content[grep('.', content)]
+  #On occastion, I have seen this problem. 
+  content<-gsub('Publicationdate', 'Publication date', content)
   num <- cumsum(grepl("______________", content))
   content<-split(content, num)
 

@@ -13,7 +13,8 @@ readNews<-tm::FunctionGenerator(
     author<-gsub('Author:', '', grep('^Author:', elem$content, value=TRUE))
     title<-gsub('Title:', '', grep('^Title:', elem$content, value=TRUE))
     section<-gsub('Section: ', '', grep('^Section: ', elem$content, value=TRUE))
-    datetimestamp<-strptime(gsub('Publication date: ', '', grep('^Publication date:', elem$content, value=TRUE)), format="%b %d, %Y")
+    datetimestamp<-as.Date(
+      gsub('Publication date: ', '', grep('^Publication date:', elem$content, value=TRUE)), format="%b %d, %Y")
     origin<-gsub('Publication title:', '', grep('^Publication title:', elem$content, value=TRUE))
     id<-as.numeric(gsub('ProQuest document ID: ', '', grep('^^ProQuest document ID:', elem$content, value=TRUE)))
     ####Note: Just because ProQuest decides to be a little tricky with their encoding of "Full Text", you have to account for both capital T and small t. Thanks ProQuest!
